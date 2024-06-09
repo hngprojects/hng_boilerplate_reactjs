@@ -119,7 +119,19 @@ module.exports = {
     ],
     ...stylisticRules,
   },
-  settings: { react: { version: 'detect' } },
+  settings: {
+    'import-x/resolver': {
+      node: {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx',
+        ],
+      },
+    },
+    react: { version: 'detect' },
+  },
   overrides: [
     {
       files: [ '.eslintrc.*js' ],
