@@ -1,17 +1,16 @@
-import {
-  createBrowserRouter,
-} from 'react-router-dom';
-import Layout from './layout';
+import { createBrowserRouter } from "react-router-dom";
+
+import Layout from "./layout";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Layout/>,
+    path: "/",
+    element: <Layout />,
     children: [
       {
-        path: '/',
-        async lazy () {
-          const { default: Component } = await import('./pages/index');
+        path: "/",
+        async lazy() {
+          const { default: Component } = await import("./pages/index");
 
           return {
             Component,
