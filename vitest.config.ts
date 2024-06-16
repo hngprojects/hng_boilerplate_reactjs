@@ -12,7 +12,7 @@ export default mergeConfig(
       reporters: ["default", "html"],
       coverage: {
         enabled: true,
-        exclude: ["node_modules/", "src/test/"],
+        exclude: ["node_modules/", "src/test/", "src/main.tsx"],
         include: ["src/**/*.{js,jsx,ts,tsx}"],
         provider: "istanbul",
         reporter: ["text", "json-summary", "json", "html"],

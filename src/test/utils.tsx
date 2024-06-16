@@ -1,27 +1,36 @@
 /* eslint-disable react-refresh/only-export-components */
 import { render, type RenderOptions } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { RouterProvider } from "react-router-dom";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
-import router from "../router";
+import { routerConfig } from "../router";
 
-const AllTheProviders = () => {
-  return (
+interface CustomRenderOptions {
+  initialEntries?: string[];
+  renderOptions?: RenderOptions;
+}
+const customRender = (options?: CustomRenderOptions) => {
+  const router = createMemoryRouter(routerConfig, {
+    initialEntries: options?.initialEntries ?? ["/"],
+  });
+
+  return render(
     <>
       <RouterProvider router={router} />
-    </>
+    </>,
+    { ...options?.renderOptions },
   );
 };
 
-const customRender = (options?: Omit<RenderOptions, "wrapper">) =>
-  render(<></>, { wrapper: AllTheProviders, ...options });
+const setup = (...options: Parameters<typeof customRender>) => {
+  const user = userEvent.setup();
+  const view = customRender(...options);
 
-const setup = (...renderOptions: Parameters<typeof customRender>) => {
   return {
-    user: userEvent.setup(),
-    render: customRender(...renderOptions),
+    user,
+    view,
   };
 };
 
 export * from "@testing-library/react";
-export { customRender as render, setup };
+export { customRender, setup };
