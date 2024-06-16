@@ -5,6 +5,11 @@
  *
  * eslint@^8.57.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh eslint-plugin-unicorn eslint-plugin-unused-imports@^3.2.0 prettier eslint-config-prettier eslint-plugin-prettier @ianvs/prettier-plugin-sort-imports
  *
+ *
+ * To Replicate the vitest configuration, you need to install the following dependencies:
+ *
+ * eslint-plugin-vitest@^0.4.1 eslint-testing-library
+ *
  * Also replicate the .prettierrc.cjs file in the root of your project.
  */
 
@@ -16,6 +21,7 @@ module.exports = {
     es2020: true,
   },
   extends: [
+    "plugin:vitest/all",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
@@ -23,7 +29,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
-    "plugin:vitest/all",
+    "plugin:testing-library/react",
   ],
   ignorePatterns: ["dist", "node_modules"],
   parser: "@typescript-eslint/parser",
@@ -34,6 +40,7 @@ module.exports = {
     "unicorn",
     "unused-imports",
     "vitest",
+    "testing-library",
   ],
   rules: {
     "unused-imports/no-unused-imports": "error",
@@ -72,6 +79,12 @@ module.exports = {
       files: ["*.d.ts"],
       rules: {
         "unicorn/prevent-abbreviations": "off",
+      },
+    },
+    {
+      files: ["!*.test.(js|jsx|ts|tsx)"],
+      rules: {
+        "vitest/require-hook": "off",
       },
     },
   ],
