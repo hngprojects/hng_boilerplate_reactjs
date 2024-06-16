@@ -20,6 +20,7 @@ jobs:
       - run: pnpm install
       - uses: sibiraj-s/action-eslint@v3
         with:
-          eslint-args: '--ignore-path=.gitignore --quiet'
-          extensions: 'js,jsx,ts,tsx'
+          eslint-args: "--ignore-path=.gitignore --quiet"
+          extensions: "js,jsx,ts,tsx"
+          ignore-path: .eslintignore
           annotations: true
