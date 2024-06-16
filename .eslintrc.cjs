@@ -24,6 +24,7 @@ module.exports = {
     "plugin:import-x/recommended",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
+    "plugin:vitest/all",
   ],
   ignorePatterns: ["dist", "node_modules"],
   parser: "@typescript-eslint/parser",
@@ -33,6 +34,7 @@ module.exports = {
     "react-refresh",
     "unicorn",
     "unused-imports",
+    "vitest",
   ],
   rules: {
     "unused-imports/no-unused-imports": "error",
@@ -61,6 +63,7 @@ module.exports = {
       },
     },
     react: { version: "detect" },
+    vitest: { typecheck: true },
   },
   overrides: [
     {

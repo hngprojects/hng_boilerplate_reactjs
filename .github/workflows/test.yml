@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - run: pnpm install
+      - name: "Test"
+        run: pnpm run test:ci
+      - name: "Report Coverage"
+        if: needs.pr-check.outputs.number != null
+        uses: davelosert/vitest-coverage-report-action@v2
