@@ -3,7 +3,7 @@
 /**
  * To use this configuration, you need to install the following dependencies:
  *
- * eslint@^8.57.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-import-x eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh eslint-plugin-unicorn eslint-plugin-unused-imports@^3.2.0 prettier eslint-config-prettier eslint-plugin-prettier @ianvs/prettier-plugin-sort-imports
+ * eslint@^8.57.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh eslint-plugin-unicorn eslint-plugin-unused-imports@^3.2.0 prettier eslint-config-prettier eslint-plugin-prettier @ianvs/prettier-plugin-sort-imports
  *
  * Also replicate the .prettierrc.cjs file in the root of your project.
  */
@@ -21,7 +21,6 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:import-x/recommended",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
     "plugin:vitest/all",
@@ -57,11 +56,6 @@ module.exports = {
     ],
   },
   settings: {
-    "import-x/resolver": {
-      node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      },
-    },
     react: { version: "detect" },
     vitest: { typecheck: true },
   },
