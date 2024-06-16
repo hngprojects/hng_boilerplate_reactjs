@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, type RouteObject } from "react-router-dom";
 
 import Layout from "./layout";
 
-const router = createBrowserRouter([
+export const routerConfig: RouteObject[] = [
   {
     path: "/",
     element: <Layout />,
@@ -19,6 +19,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+const router = createBrowserRouter(routerConfig);
 
 export default router;
