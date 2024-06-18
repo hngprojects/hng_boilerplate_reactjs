@@ -20,6 +20,7 @@ jobs:
 
   coverage:
     needs: [test]
+    runs-on: ubuntu-latest
     steps:
       - name: "Report Coverage"
         if: always()
